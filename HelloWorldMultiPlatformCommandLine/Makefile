@@ -16,8 +16,8 @@ HW_OBJECTS	= $(HWSOURCES:.c=.o)
 intel:	CC	= /usr/bin/gcc
 intel:	CC_LINKER	= /usr/bin/gcc
 intel:	CC_LINKER_FLAGS = --sysroot=/ -lstdc++ -lm -o
-intel:	MISCOPTS	= -c -pipe -g --sysroot=/
-intel:	RELEASEFLAGS	= -O2 -lrt
+intel:	MISCOPTS	= -c -pipe --sysroot=/
+intel:	RELEASEFLAGS	= -O3
 intel:	INCLUDES	= -I/usr/include -I ./src
 intel: $(HW_TARGET_INTEL)
 	@echo Built HW_TARGET_INTEL
@@ -53,7 +53,6 @@ $(HW_TARGET_RISCV): $(HW_OBJECTS)
 	$(CC_LINKER) $(CC_LINKER_FLAGS) $(HW_TARGET_RISCV) $(HW_OBJECTS) $(LIBS)
 
 %.o: %.c $(HEADERS)
-	-rm -f $(HW_OBJECTS)
 	@echo Building $<
 	$(CC) $(INCLUDES) -o $@ -c $< $(FLAGS) $(RELEASEFLAGS) $(MISCOPTS)
 
