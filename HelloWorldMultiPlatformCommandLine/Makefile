@@ -4,7 +4,7 @@ SHELL = /bin/sh
 
 ECHO 		= echo
 FLAGS 		= -fopenmp
-DEBUGFLAGS 	= -g -p -pg -ftest-coverage -fprofile-arcs -lrt
+DEBUGFLAGS 	= -g -p -pg -fprofile-arcs -lrt
 
 HW_TARGET_ARM 	= hwARM.exe
 HW_TARGET_RISCV = hwRISCV.exe
@@ -28,7 +28,7 @@ $(HW_TARGET_INTEL): $(HW_OBJECTS)
 
 arm:	CC	= /opt/iSpaceOS/2018.1/sysroots/x86_64-ispaceossdk-linux/usr/bin/aarch64-ispace-linux/aarch64-ispace-linux-gcc
 arm:	CC_LINKER	= /opt/iSpaceOS/2018.1/sysroots/x86_64-ispaceossdk-linux/usr/bin/aarch64-ispace-linux/aarch64-ispace-linux-gcc
-arm:	CC_LINKER_FLAGS = --sysroot=/opt/iSpaceOS/2018.1/sysroots/aarch64-ispace-linux -ftest-coverage -fprofile-arcs -lstdc++ -lm -o
+arm:	CC_LINKER_FLAGS = --sysroot=/opt/iSpaceOS/2018.1/sysroots/aarch64-ispace-linux  -fprofile-arcs -lstdc++ -lm -o
 arm:	MISCOPTS	= -c -pipe -g -march=armv8-a+lse+crc -mtune=cortex-a53 --sysroot=/opt/iSpaceOS/2018.1/sysroots/aarch64-ispace-linux
 arm:	RELEASEFLAGS	= -O2 -lrt -ffat-lto-objects -flto -mstrict-align -mcmodel=large
 arm:	INCLUDES	= -I/opt/iSpaceOS/2018.1/sysroots/aarch64-ispace-linux/usr/include/c++/7.3.0 -I/opt/iSpaceOS/2018.1/sysroots/aarch64-ispace-linux/usr/include/c++/7.3.0/aarch64-ispace-linux -I/opt/iSpaceOS/2018.1/sysroots/aarch64-ispace-linux/usr/include -I sp/src -I dp/src -I af/src -I dr/src -I dr/include
